@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupButton() {
         binding.myPageButton.setOnClickListener {
-            val intent = MyPageActivity.createIntent(this)
+            val intent = MyPageActivity.createIntent(this, "マイページへボタンからの遷移")
             startActivity(intent)
         }
 
@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_VIEW).also {
                 it.data = Uri.parse("hoge://test")
                 it.addCategory(Intent.CATEGORY_BROWSABLE)
+                it.putExtra(MyPageActivity.FROM,"インテントフィルターからの遷移")
             }
             startActivity(intent)
         }
